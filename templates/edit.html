@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Edit Record{% endblock %}
+{% block body %}
+<form method="post" action="/save?id={{id}}">
+  {% if complaint %}<span class="complaint">{{ complaint }}</span>{% endif %}
+  <label>Name: <input name="name" value="{{ name }}"></label>
+  <label>Address: <input name="address" value="{{ address }}"></label>
+  <label>Phone number: <input name="phone" value="{{ phone }}"></label>
+  <label>Email: <input name="email" value="{{ email }}"></label>
+  <button type="submit">Save record</button> | <a href="/">Cancel</a>
+</form>
+{% endblock %}

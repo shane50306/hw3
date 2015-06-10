@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}Forget Password{% endblock %}
+{% block body %}
+<form method="post">
+	{% if complaint %}<span class="complaint">{{ complaint }}</span>{% endif %}
+  <label>Account: <input name="username" value="{{ username }}"></label>
+  <label>Phone Number: <input name="phone" value="{{ phone }}"></label>
+  <label>New Password: <input name="password" value = "{{ password }}"type="password"></label>
+  <button type="submit">Submit</button>  <a href = "\login">Cancel</a>
+</form>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}New User{% endblock %}
+{% block body %}
+<form method="post" action="/new_user">
+  {% if complaint %}<span class="complaint">{{ complaint }}</span>{% endif %}
+  <label>Account: <input name="user_name" value="{{ user_name }}"></label>
+  <label>Password: <input type = 'password' name="password" value="{{ password }}"></label>
+  <label>Phone number: <input name="phone" value="{{ phone }}"></label>
+  <button type="submit">New user</button> | <a href="/">Cancel</a>
+</form>
+{% endblock %}

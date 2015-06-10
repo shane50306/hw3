@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Welcome, {{ username }}{% endblock %}
+{% block body %}
+{% for message in flash_messages %}
+  <div class="flash_message">{{ message }}<a href="/">&times;</a></div>
+{% endfor %}
+<p>Your Address Book</p>
+<table border="1">
+  <tr>
+	<th>Name</th>
+    <th>Address</th>
+	<th>Phone</th>
+	<th>E-mail</th>
+	<th>Edit</th>
+	<th>Delete</th>
+  </tr>
+  {% set prep = 'to' %}
+  {% for p in information %}
+    <tr>
+    {% set prep = 'from' if (prep == 'to') else 'to' %}
+	<td class="{{ prep }}">{{ p.name }}</td>
+	<td class="{{ prep }}">{{ p.address }}</td>
+	<td class="{{ prep }}">{{ p.phone}}</td>
+	<td class="{{ prep }}">{{p.email}}</td>
+	<td class="{{ prep }}"><a href = "edit?id={{p.id}}&name={{p.name}}&address={{p.address}}&phone={{p.phone}}&email={{p.email}}">Edit</a></td>
+	<td class="{{ prep }}"><a href = "delete?id={{p.id}}">Delete</a></td>
+	</tr>
+  {% endfor %}
+</table>
+<a href="/new">New record</a> | <a href="/logout">Log out</a> | <a href="/delete_user">Delete user</a>
+{% endblock %}
